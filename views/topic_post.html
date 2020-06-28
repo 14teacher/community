@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="/css/mui.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="/"></a>
+			<h1 class="mui-title">发表话题</h1>
+		</header>
+		
+		<div class="mui-content">
+			<form class="" id="topic_form" method="post" action="/topic">
+				<div class="mui-input-group">
+					<div class="mui-input-row ">
+						<label>昵称</label>
+						<input id="nickname" name="nickname" type="text" placeholder="请输入你的昵称" required="required">
+					</div>
+				</div>
+			
+			<div class="mui-input-row" style="margin: 10px 5px;">
+				<textarea id="content" name="content" rows="10" placeholder="内容" required="required"></textarea>
+			</div>
+			<button id="topic" type="submit" class="mui-btn mui-btn-purple mui-btn-block">发表</button>
+			</form>
+		</div>
+		
+		
+		
+		<script src="/js/mui.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<script src="/node_modules/jquery/dist/jquery.js"></script>
+		<script>
+		  $('#topic_form').on('submit', function (e) {
+		    e.preventDefault()//阻止默认事件
+		    var formData = $(this).serialize()
+		    $.ajax({
+		      url: '/topic',
+		      type: 'post',
+		      data: formData,
+		      dataType: 'json',
+		      success: function (data) {
+		        var err_code = data.err_code
+		        if (err_code === 0) {
+							mui.toast('发表成功',{ duration:'long', type:'div' }) 
+							setTimeout(()=>{
+								 window.location.href = '/#tabbar'
+							},1000)
+		         
+		        } else if (err_code === 1) {
+		          window.alert('话题已存在！')
+		        } else if (err_code === 500) {
+		          window.alert('服务器忙，请稍后重试！')
+		        }
+		      }
+		    })
+		  })
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="/css/mui.min.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" type="text/css" href="/css/app.css" />
+		<style>
+			#tabbar{
+				height: 100vh;
+				overflow: hidden;
+			}
+			#cont{
+				
+				margin-top: 44px;
+			}
+			.title{
+				margin: 20px 15px 10px;
+				color: #6d6d72;
+				font-size: 15px;
+			}
+			
+			.oa-contact-cell.mui-table .mui-table-cell {
+				padding: 11px 0;
+				vertical-align: middle;
+			}
+			
+			.oa-contact-cell {
+				position: relative;
+				margin: -11px 0;
+			}
+	
+			.oa-contact-avatar {
+				width: 75px;
+			}
+			.oa-contact-avatar img {
+				border-radius: 50%;
+			}
+			.oa-contact-content {
+				width: 100%;
+			}
+			.oa-contact-name {
+				margin-right: 20px;
+			}
+			.oa-contact-name, .oa-contact-position {
+				float: left;
+			}
+		</style>
+	</head>
+
+	<body>
+
+
+		<!-- 主界面菜单同时移动 -->
+		<!-- 侧滑导航根容器 -->
+		<div class="mui-off-canvas-wrap mui-draggable">
+			<!-- 主页面容器 -->
+			<div class="mui-inner-wrap">
+
+				
+				<!-- 菜单容器 -->
+				<aside class="mui-off-canvas-left" id="offCanvasSide">
+					<div class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<!-- 菜单具体展示内容 -->
+							<!-- <div class="title">侧滑导航</div> -->
+							<div class="content">
+							{{include './menu.html'}}
+							<!-- {{block 'body'}}{{/block}} -->
+							</div>
+						</div>
+					</div>
+				</aside>
+
+				
+				<!-- 主页面标题 -->
+				<nav class="mui-bar mui-bar-tab">
+					<a class="mui-tab-item mui-active" href="#tabbar0">
+						<span class="mui-icon mui-icon-home"></span>
+						<span class="mui-tab-label">首页</span>
+					</a>
+					<a class="mui-tab-item" id="a_tabbar"  href="#tabbar">
+						<span class="mui-icon mui-icon-paperplane"></span>
+						<span class="mui-tab-label">精选</span>
+					</a>
+					<a class="mui-tab-item" href="#tabbar3">
+						<span class="mui-icon mui-icon-contact"></span>
+						<span class="mui-tab-label">我</span>
+					</a>
+					
+				</nav>
+			
+				<!-- 主页面内容容器 -->
+		
+				<div class="mui-content mui-scroll-wrapper">
+							
+							<div id="tabbar0"  class="mui-scroll mui-control-content mui-active">
+								<!-- 主界面具体展示内容 -->
+								
+								
+								
+								<!-- 轮播图 -->
+								<div class="mui-slider">
+									<div class="mui-slider-group mui-slider-loop">
+										<!--支持循环，需要重复图片节点-->
+										<div class="mui-slider-item mui-slider-item-duplicate"><a href="/login"><img src="/public/img/h4.jpg" /></a></div>
+										<div class="mui-slider-item"><a id="a1" class="mui-navigate-right" href="#"><img src="/public/img/h1.jpg" /></a></div>
+										<div class="mui-slider-item"><a href="/login"><img src="/public/img/h2.jpg" /></a></div>
+										<div class="mui-slider-item"><a href="/login"><img src="/public/img/h3.jpg" /></a></div>
+										<div class="mui-slider-item"><a href="/login"><img src="/public/img/h4.jpg" /></a></div>
+										<!--支持循环，需要重复图片节点-->
+										<div class="mui-slider-item mui-slider-item-duplicate"><a href="/login"><img src="/public/img/h1.jpg" /></a></div>
+									</div>
+								</div>
+		
+								<!-- 列表 -->
+						
+								<ul class="mui-table-view">
+									{{each comments}}
+									<li class="mui-table-view-cell mui-media">
+										<a class="" href="/content">
+											<img class="mui-media-object mui-pull-left" src="{{$value.picture}}">
+											<div class="mui-media-body">
+												{{$value.title}}
+												<p class="mui-ellipsis">作者：{{$value.author}}--{{$value.reated_time}}</p>
+											</div>
+										</a>
+									</li>
+									{{/each}}
+								</ul>
+						</div>
+		<!-- end -->
+		<!-- 第二个页面 -->
+		<div id="tabbar" class="mui-control-content mui-active mui-scroll">
+			<!-- <div id="">
+				<header class="mui-bar mui-bar-nav">
+					<h1 class="mui-title">精选</h1>
+				</header>
+			</div> -->
+			<div id="">
+				<header id="header" class="mui-bar mui-bar-nav">
+					<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+					<h1 class="mui-title">导航栏</h1>
+				</header>
+			</div>
+			
+			<div id="cont">
+				<div class="mui-card">
+					<!--页眉，放置标题-->
+					<div class="mui-card-header">本期话题-你心中的理想</div>
+					<!--内容区-->
+					<div class="mui-card-content">
+						在我们的生活中最让人感动的日子总是那些一心一意为了一个目标而努力奋斗的日子，哪怕是为了一个卑微的目标而奋斗也是值得我们骄傲的，因为无数卑微的目标积累起来可能就是一个伟大的成就。金字塔也是由每一块石头累积而成的，每一块石头都是很简单的，而金字塔却是宏伟而永恒的
+					</div>
+					<!--页脚，放置补充信息或支持的操作-->
+					<div class="mui-card-footer">
+						<button type="button" id="btn_topic" class="mui-btn mui-btn-yellow mui-btn-block">发表吐槽</button>
+					</div>
+				</div>
+				
+			<ul class="mui-table-view">
+				{{each topic2_data}}
+			    <li class="mui-table-view-cell">{{$value.nickname}}说：{{$value.content}}</li>
+				{{/each}}
+			</ul>
+			
+			</div>
+			
+		</div>
+		<!-- end -->
+		
+		<!-- 第三个页面 -->
+
+		<div id="tabbar3" class="mui-control-content mui-active mui-scroll">
+		
+			<div class="">
+				{{if user}}
+				<ul class="mui-table-view">
+				    <li class="mui-table-view-cell " style="height: 110px; background-image: url(../public/images/yuantiao.jpg);">
+							<div class="oa-contact-avatar" style="margin: 0 auto;"> 
+								<a href="#"><img class="head"  src="{{ user.avatar }}"></a>
+							</div>
+						</li>
+				    <li class="mui-table-view-cell ">{{ user.nickname }}</li>
+						<li class="mui-table-view-cell mui-media"> <a class="mui-navigate-right">个人资料</a></li>
+				</ul>
+				{{else}}
+				<h2>请登录...</h2>
+				{{/if}}
+			</div>
+		</div>
+		<!-- end -->
+	
+		<!-- end -->
+		</div>
+	</div>
+</div>
+	</body>
+	<script src="/js/mui.min.js"></script>
+	
+	<script>
+		mui.init({
+			swipeBack: true ,//启用右滑关闭功能
+			/*设置各种手势操作的开关*/
+		gestureConfig:{
+			tap: true, //默认为true
+			doubletap: true, //默认为false
+			longtap: true, //默认为false
+			swipe: true, //默认为true
+			drag: true, //默认为true
+			hold:false,//默认为false，不监听
+			release:false//默认为false，不监听
+			        }
+		});
+		var gallery = mui('.mui-slider');
+		gallery.slider({
+			interval: 5000 //自动轮播周期，若为0则不自动播放，默认为0；
+		});
+		mui('.mui-scroll-wrapper').scroll({
+			deceleration: 0.1 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+		});
+		mui('body').on('tap','a',function(){
+		    window.top.location.href=this.href;
+		});
+	</script>
+	
+	<script type="text/javascript">
+			window.onload = function(){
+				var btn_login = document.getElementById('offCanvasHide');
+				var btn_logout = document.getElementById('offCanvasHide2');
+				var btn_publish = document.getElementById('publish');
+				var btn_topic = document.getElementById('btn_topic');
+				var obj_a = document.getElementById('a_tabbar')
+				var seek = document.getElementById('seek')
+				// console.log(btn_login)
+				// console.log(btn_logout)
+				if(btn_login === null){
+					btn_logout.onclick = function(){
+						
+						window.location.href = '/logout'
+					}
+				}else if(btn_logout === null){
+					btn_login.onclick = function(){
+						
+						window.location.href = '/login'
+					};
+				}
+				btn_publish.onclick = function(){
+					window.location.href = '/publish'
+				};
+				
+				btn_topic.onclick = function(){
+					window.location.href = '/topic'
+				};
+				
+				obj_a.onclick = function(){
+					console.log('1234')
+					seek.style.display = 'none'
+				}
+
+			}
+		</script>
+</html>
